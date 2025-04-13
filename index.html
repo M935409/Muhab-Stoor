@@ -443,8 +443,7 @@ input, textarea {
 
 <body>
     <!-- هنا تبدأ محتويات الصفحة -->
-</body>
-<div id="privacyModal" style="
+    <div id="privacyModal" style="
     display:none;
     position:fixed;
     z-index:2000;
@@ -459,21 +458,22 @@ input, textarea {
     <div style="
         background:#bfd6f5;
         color:#333;
-        padding:20px;
+        padding:15px;
         border-radius:12px;
-        max-width:350px;
+        max-width:80%;
         max-height:70%;
         overflow-y:auto;
         text-align:right;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         font-family: 'Arial', sans-serif;
         line-height: 1.8;
-        font-size: 14px;
+        font-size: 13px;
+        width: 90%; /* تعيين عرض أكثر مرونة */
     ">
         <h3 style="
             margin-top:0;
             margin-bottom:15px;
-            font-size:18px;
+            font-size:16px;
             color:#222;
             text-align:center;
         ">سياسة الخصوصية</h3>
@@ -496,6 +496,25 @@ input, textarea {
         ">إغلاق</button>
     </div>
 </div>
+
+<!-- تعديل في CSS لجعل النوافذ أكثر مرونة على الجوال -->
+<style>
+    @media screen and (max-width: 600px) {
+        #privacyModal > div {
+            max-width: 90%;  /* تقليل العرض في الجوال */
+            padding: 10px;   /* تقليل الحشو */
+            font-size: 12px; /* تقليل حجم الخط */
+        }
+
+        #privacyModal > div h3 {
+            font-size: 14px; /* تقليل حجم العنوان */
+        }
+
+        #privacyModal > div button {
+            padding: 6px 12px; /* تقليل حجم الأزرار */
+        }
+    }
+</style>
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
