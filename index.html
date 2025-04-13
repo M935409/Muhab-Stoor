@@ -553,39 +553,95 @@ input, textarea {
     </script>
             
 
-    <div class="container" id="main-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_Sudan.svg" alt="علم السودان" class="flag" style="width: 100px; height: 100px; display: block; margin: 0 auto; border-radius: 50%;">
-        <h1>Muhab STOOR</h1>
-        <p>🛵 My delivery 🛵</p>
-        <p>😇 اطلب من بيتك وانت مرتاح</p>
-        <button class="button" onclick="showLoginForm()">تسجيل الدخول</button>
-        <button class="button" onclick="showRegistrationForm()">تسجيل دخول جديد</button>
-        <div style="display: flex; justify-content: center; margin-top: 10px;">
-            <button class="settings-button" onclick="toggleSettings()">⚙️ إعدادات</button>
-            <button class="theme-button" id="theme-button" onclick="toggleTheme()">🌓 تغيير الثيم</button>
-        </div>
-    </div>
-
-    <div class="registration-form" id="login-form" style="display: none;">
-        <h1>تسجيل الدخول</h1>
-        <input type="text" id="login-username" placeholder="ادخل اسم المستخدم" required>
-        <input type="password" id="login-password" placeholder="ادخل كلمة المرور" required>
-        <button class="button" onclick="login()">دخول</button>
-        <button class="button" onclick="hideLoginForm()">عودة</button>
-    </div>
-
-    <div class="registration-form" id="registration-form" style="display: none;">
-        <h1>تسجيل دخول جديد</h1>
-    
-        <form onsubmit="return submitForm()">
-            <input type="text" id="username" placeholder="ادخل الاسم" required>
-            <input type="email" id="email" placeholder="ادخل البريد الإلكتروني" required>
-            <input type="password" id="password" placeholder="ادخل كلمة المرور" required>
-            <input type="password" id="confirm-password" placeholder="تأكيد كلمة المرور" required>
-            <button class="button" type="submit">تسجيل</button>
-            <button class="button" type="button" onclick="hideRegistrationForm()">رجوع</button>
-        </form>
-    </div>
+            <style>
+                /* إضافة تأثير الستارة */
+                .curtain {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100vh;
+                    background-color: rgba(0, 0, 0, 0.7);
+                    z-index: 10;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    opacity: 1;
+                    transition: opacity 1s ease-in-out;
+                }
+            
+                .curtain.hidden {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            
+                /* النص داخل الستارة */
+                .curtain-text {
+                    color: white;
+                    font-size: 2rem;
+                    text-align: center;
+                    animation: fadeInText 1.5s ease-in-out;
+                }
+            
+                /* تأثير النص عند ظهور الستارة */
+                @keyframes fadeInText {
+                    0% {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    100% {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            </style>
+            
+            <div class="curtain" id="curtain">
+                <div class="curtain-text">Muhab STOOR ! مرحباً بك في </div>
+            </div>
+            
+            <div class="container" id="main-container" style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_Sudan.svg" alt="علم السودان" class="flag" style="width: 100px; height: 100px; display: block; margin: 0 auto; border-radius: 50%;">
+                <h1>Muhab STOOR</h1>
+                <p>🛵 My delivery 🛵</p>
+                <p>😇 اطلب من بيتك وانت مرتاح</p>
+                <button class="button" onclick="showLoginForm()" style="margin-bottom: 10px;">تسجيل الدخول</button>
+                <button class="button" onclick="showRegistrationForm()" style="margin-bottom: 10px;">تسجيل دخول جديد</button>
+                <div style="display: flex; justify-content: center; margin-top: 10px;">
+                    <button class="settings-button" onclick="toggleSettings()" style="margin-right: 10px;">⚙️ إعدادات</button>
+                    <button class="theme-button" id="theme-button" onclick="toggleTheme()">🌓 تغيير الثيم</button>
+                </div>
+            </div>
+            
+            <div class="registration-form" id="login-form" style="display: none;">
+                <h1>تسجيل الدخول</h1>
+                <input type="text" id="login-username" placeholder="ادخل اسم المستخدم" required style="margin-bottom: 10px;">
+                <input type="password" id="login-password" placeholder="ادخل كلمة المرور" required style="margin-bottom: 10px;">
+                <button class="button" onclick="login()" style="margin-bottom: 10px;">دخول</button>
+                <button class="button" onclick="hideLoginForm()">عودة</button>
+            </div>
+            
+            <div class="registration-form" id="registration-form" style="display: none;">
+                <h1>تسجيل دخول جديد</h1>
+                <form onsubmit="return submitForm()">
+                    <input type="text" id="username" placeholder="ادخل الاسم" required style="margin-bottom: 10px;">
+                    <input type="email" id="email" placeholder="ادخل البريد الإلكتروني" required style="margin-bottom: 10px;">
+                    <input type="password" id="password" placeholder="ادخل كلمة المرور" required style="margin-bottom: 10px;">
+                    <input type="password" id="confirm-password" placeholder="تأكيد كلمة المرور" required style="margin-bottom: 10px;">
+                    <button class="button" type="submit" style="margin-bottom: 10px;">تسجيل</button>
+                    <button class="button" type="button" onclick="hideRegistrationForm()">رجوع</button>
+                </form>
+            </div>
+            
+            <script>
+                window.onload = function() {
+                    setTimeout(function() {
+                        // إخفاء الستارة بعد 3 ثواني
+                        document.getElementById('curtain').classList.add('hidden');
+                    }, 3000);  // تأخير 3 ثواني قبل إخفاء الستارة
+                }
+            </script>
+            
     
     <script>
     function submitForm() {
